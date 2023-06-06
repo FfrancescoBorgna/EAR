@@ -17,15 +17,19 @@ train:
   num_clips: 5 # clips adopted in training
   dense_sampling: # sampling version adopted in training for each modality
     RGB: True
+    Audio: True
   num_frames_per_clip: # number of frames adopted in training for each modality
     RGB: 16
+    Audio: 16
 
 test:
   num_clips: 5 # number of clips in testing
   dense_sampling: # sampling version adopted in test for each modality
     RGB: True
+    Audio: True
   num_frames_per_clip: # number of frames adopted in test for each modality
     RGB: 16
+    Audio: 16
 
 dataset:
   annotations_path: train_val # path for the annotations data
@@ -35,9 +39,13 @@ dataset:
   stride: 2 # stride in case of dense sampling
   resolution: 224 # input resolution to the model
   RGB:
-    data_path: ??? # path to RGB data
+    data_path: ek_data/frames/ # path to RGB data
     tmpl: "img_{:010d}.jpg" # format of RGB filenames
     features_name: test_feat_rgb_audio
+  Audio:
+    data_path: ek_data/frames/ # path to RGB data
+    tmpl: "img_{:010d}.jpg" # format of RGB filenames
+    features_name: test_feat_rgb_audio  
   Event: # not neeeded for the project
     rgb4e: 6
 
@@ -50,6 +58,9 @@ models:
     lr_steps: 1500
     lr: 1e-2
     gamma: 0
+    l_s: 0.75
+    l_r: 0.5
+    l_t: 0.75
     sgd_momentum: 0.9
     weight_decay: 1e-7
     temporal-type: TRN
@@ -65,6 +76,9 @@ models:
     lr_steps: 1500
     lr: 1e-2
     gamma: 0
+    l_s: 0.75
+    l_r: 0.5
+    l_t: 0.75
     sgd_momentum: 0.9
     weight_decay: 1e-7
     temporal-type: TRN

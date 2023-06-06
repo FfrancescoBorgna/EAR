@@ -12,8 +12,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["config=configs/TA3N.yaml" ,
-                    "dataset.RGB.data_path=ek_data/frames/",
+            "args": ["config=configs/MultiModal.yaml" ,
                     "action=train"
                 ]
             
